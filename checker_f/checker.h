@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ra_rb.c                                            :+:    :+:            */
+/*   checker.h                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/06 04:02:23 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 04:50:19 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/03/22 21:48:26 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/04/06 19:38:01 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-void	ra_rb(t_stack **stack)
-{
-	t_stack *temp;
-	t_stack *temp2;
+# include <unistd.h>
 
-	if (!*stack || stack_lstsize(*stack) < 2)
-		return ;
-	temp = *stack;
-	*stack = temp->next;
-	temp2 = stack_lstlast(*stack);
-	temp2->next = temp;
-	temp->next = NULL;
-	fix_ranking(stack);
-}
+# include "../stack_list/stack_list.h"
+# include "../commands/commands.h"
+# include "../libft/libft.h"
+# include "../get_next_line/get_next_line.h"
 
-void	rr(t_stack **stack_a, t_stack **stack_b)
-{
-	ra_rb(stack_a);
-	ra_rb(stack_b);
-}
+int		input(t_stack **stack_a, t_stack **stack_b);
+void	result(t_stack **stack_a, t_stack **stack_b);
+
+#endif

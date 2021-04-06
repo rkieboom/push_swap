@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_swap.c                                          :+:    :+:            */
+/*   fix_ranking.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/03/22 21:45:19 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 00:53:12 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/04/06 01:18:35 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/04/06 19:30:52 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-#include "stack_list/stack_list.h"
+#include "commands.h"
 
-void	ft_swap(int *num1, int *num2)
+void	fix_ranking(t_stack **head)
 {
-	int temp;
+	t_stack *temp;
+	int i;
 
-	temp = *num2;
-	*num2 = *num1;
-	*num1 = temp;
-}
-
-//Misschien weghalen
-void	ft_swapp(struct s_stack *p1, struct s_stack *p2)
-{
-	struct s_stack temp;
-	
-	temp = *p2;
-	*p2 = *p1;
-	*p1 = temp;
+	if (!*head)
+		return ;
+	i = 0;
+	temp = *head;
+	while (temp->next)
+	{
+		temp->rank = i;
+		temp = temp->next;
+		i++;
+	}
+	temp->rank = i;
 }

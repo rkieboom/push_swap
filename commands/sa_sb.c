@@ -6,11 +6,11 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 00:52:32 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 04:50:02 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/06 19:31:29 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "commands.h"
 
 void	sa_sb(t_stack **stack_head)
 {
@@ -27,15 +27,8 @@ void	sa_sb(t_stack **stack_head)
 	*stack_head = new_stack;
 }
 
-void	sa_sb_ss(char *str, t_stack **stack_a, t_stack **stack_b)
-{
-	if (ft_strncmp(str, "sa", 3) == 0)
-		sa_sb(stack_a);
-	else if (ft_strncmp(str, "sb", 3) == 0)
-		sa_sb(stack_b);
-	else if (ft_strncmp(str, "ss", 3) == 0)
-	{
-		sa_sb(stack_a);
-		sa_sb(stack_b);
-	}
+void	ss(t_stack **stack_a, t_stack **stack_b)
+{ 
+	sa_sb(stack_a);
+	sa_sb(stack_b);
 }

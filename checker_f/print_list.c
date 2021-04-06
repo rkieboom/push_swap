@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   stack_lstclear.c                                   :+:    :+:            */
+/*   print_list.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: spelle <spelle@student.codam.nl>             +#+                     */
+/*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/03/09 14:53:06 by spelle        #+#    #+#                 */
-/*   Updated: 2021/03/20 16:20:22 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/04/06 19:28:45 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/04/06 19:29:16 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack_list.h"
+#include "checker.h"
 
-void	stack_lstclear(t_stack **lst, void (*del)(void*))
+void	print_list(t_stack *list)
 {
-	// if (!lst)
-	// 	return ;
-	// while (*lst->next)
-	// {
-	// 	temp = *lst->next;
-	// 	free(*lst);
-	// 	*lst = temp;
-	// }
+	if (!list)
+	{
+		printf("NULL\n");
+		return ;
+	}
+	while (list->next)
+	{
+		printf("%d=%d\n", list->rank, list->value);
+		list = list->next;
+	}
+	printf("%d=%d\n", list->rank, list->value);
 }

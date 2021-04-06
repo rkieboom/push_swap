@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/04/06 04:45:00 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/04/06 19:42:09 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,20 @@ LIBFT = libft/libft.a
 
 FLAGS = -Wall -Werror -Wextra
 
-SRCS = stack_list/stack_lst_new.c stack_list/stack_lstlast.c stack_list/stack_lstsize.c stack_list/stack_lstadd_back.c \
-checker.c ft_swap.c sa_sb.c pa_pb.c stack_list/stack_lst_remove.c stack_list/stack_lst_add_front.c \
-fix_ranking.c ra_rb.c rra_rrb.c stack_list/stack_lst_goto.c
+SRCS = $(SRCS.CHECKER) $(SRCS.GNL) $(SRCS.STACK) $(SRCS.COMMANDS)
+
+SRCS.CHECKER = checker_f/checker.c checker_f/input.c checker_f/result.c
+
+SRCS.PUSHSWAP = 
+
+SRCS.GNL = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+
+SRCS.STACK = stack_list/stack_lst_add_front.c stack_list/stack_lst_goto.c stack_list/stack_lst_new.c stack_list/stack_lst_remove.c \
+stack_list/stack_lst_add_back.c stack_list/stack_lstlast.c stack_list/stack_lstsize.c
+
+SRCS.COMMANDS = commands/fix_ranking.c commands/ft_swap.c commands/pa_pb.c commands/ra_rb.c commands/rra_rrb.c commands/sa_sb.c
 
 O.SRCS = $(SRCS:.c=.o)
-
 
 all: $(NAME)
 

@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   fix_ranking.c                                      :+:    :+:            */
+/*   ra_rb.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/06 01:18:35 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 03:54:08 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/04/06 04:02:23 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/04/06 19:31:20 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "commands.h"
 
-void	fix_ranking(t_stack **head)
+void	ra_rb(t_stack **stack)
 {
 	t_stack *temp;
-	int i;
+	t_stack *temp2;
 
-	if (!*head)
+	if (!*stack || stack_lstsize(*stack) < 2)
 		return ;
-	i = 0;
-	temp = *head;
-	while (temp->next)
-	{
-		temp->rank = i;
-		temp = temp->next;
-		i++;
-	}
-	temp->rank = i;
+	temp = *stack;
+	*stack = temp->next;
+	temp2 = stack_lstlast(*stack);
+	temp2->next = temp;
+	temp->next = NULL;
+	fix_ranking(stack);
+}
+
+void	rr(t_stack **stack_a, t_stack **stack_b)
+{
+	ra_rb(stack_a);
+	ra_rb(stack_b);
 }

@@ -6,13 +6,12 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 00:55:08 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 04:04:44 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/06 19:31:11 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "commands.h"
 
-//Nog kijken
 void	pa(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *b;

@@ -6,11 +6,11 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 04:30:54 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 04:48:58 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/06 19:31:24 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "commands.h"
 
 void	rra_rrb(t_stack **stack)
 {

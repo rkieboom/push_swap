@@ -6,16 +6,11 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/20 16:00:19 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 04:45:14 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/06 19:39:16 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "stack_list/stack_list.h"
 #include "checker.h"
-#include <unistd.h>
-
-#include <stdio.h> //Printf
 
 void	ft_reterror(void)
 {
@@ -23,22 +18,7 @@ void	ft_reterror(void)
 	exit(EXIT_FAILURE);
 }
 
-void	print_list(t_stack *list)
-{
-	if (!list)
-	{
-		printf("NULL\n");
-		return ;
-	}
-	while (list->next)
-	{
-		printf("%d=%d\n", list->rank, list->value);
-		list = list->next;
-	}
-	printf("%d=%d\n", list->rank, list->value);
-}
-
-void	check_input(char *str)
+void	check_args(char *str)
 {
 	int i;
 
@@ -58,11 +38,11 @@ t_stack	*save_args(char **argv, t_stack *list)
 	i = 1;
 	while (argv[i])
 	{
-		check_input(argv[i]);
+		check_args(argv[i]);
 		if (stack_lstsize(list) == 0)
 			list = stack_lst_new(0, ft_atoi(argv[i]));
 		else
-			stack_lstadd_back(&list, stack_lst_new(stack_lstsize(list), ft_atoi(argv[i])));
+			stack_lst_add_back(&list, stack_lst_new(stack_lstsize(list), ft_atoi(argv[i])));
 		i++;
 	}
 	return (list);
@@ -78,28 +58,8 @@ int main(int argc, char **argv)
 	stack_b = NULL;
 	if (!stack_a)
 		return (-1);
-
-	printf("a\n###\n");
-	print_list(stack_a);
-	printf("###\n\nb\n###\n");
-	print_list(stack_b);
-	printf("###\n\n\n");
-
-	rra_rrb(&stack_a);
-
-	printf("a\n###\n");
-	print_list(stack_a);
-	printf("###\n\nb\n###\n");
-	print_list(stack_b);
-	printf("###\n\n\n");
-
-	rra_rrb(&stack_a);
-
-	printf("a\n###\n");
-	print_list(stack_a);
-	printf("###\n\nb\n###\n");
-	print_list(stack_b);
-	printf("###\n\n\n");
-	while (1);
+	if (input(&stack_a, &stack_b) == -1)
+		ft_reterror();
+	result(&stack_a, &stack_b);
 	return (0);
 }
