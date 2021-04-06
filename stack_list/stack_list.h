@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/09 14:55:27 by spelle        #+#    #+#                 */
-/*   Updated: 2021/03/20 16:30:04 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/06 04:40:02 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ typedef struct s_stack
 
 t_stack	*stack_lst_new(int rank, int value);
 
-void	stack_lst_add_front(t_stack **lst, t_stack *new);
+void	stack_lst_add_front(t_stack **stack_a, t_stack **stack_b);
 void	stack_lstadd_back(t_stack **lst, t_stack *new);
 void	stack_lstclear(t_stack **lst, void (*del)(void*));
+void	stack_lst_remove(t_stack **head, int rank);
 t_stack	*stack_lstlast(t_stack *lst);
 int		stack_lstsize(t_stack *lst);
+t_stack	*stack_lst_goto(t_stack **lst, int rank);
 
 
 #endif
