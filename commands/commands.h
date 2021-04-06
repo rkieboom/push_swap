@@ -6,14 +6,14 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 19:26:08 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 19:42:18 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/06 19:50:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COMMANDS_H
 # define COMMANDS_H
 
-#include "../checker_f/checker.h"
+#include "../stack_list/stack_list.h"
 
 void	ft_swap(int *num1, int *num2);
 
