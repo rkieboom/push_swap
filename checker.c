@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/20 16:00:19 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/03/22 23:51:49 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/06 04:45:14 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ void	ft_reterror(void)
 
 void	print_list(t_stack *list)
 {
+	if (!list)
+	{
+		printf("NULL\n");
+		return ;
+	}
 	while (list->next)
 	{
 		printf("%d=%d\n", list->rank, list->value);
@@ -69,11 +74,32 @@ int main(int argc, char **argv)
 	t_stack *stack_b;
 
 	(void)argc;
-	stack_b = NULL;
 	stack_a = save_args(argv, NULL);
+	stack_b = NULL;
 	if (!stack_a)
 		return (-1);
 
+	printf("a\n###\n");
 	print_list(stack_a);
+	printf("###\n\nb\n###\n");
+	print_list(stack_b);
+	printf("###\n\n\n");
+
+	rra_rrb(&stack_a);
+
+	printf("a\n###\n");
+	print_list(stack_a);
+	printf("###\n\nb\n###\n");
+	print_list(stack_b);
+	printf("###\n\n\n");
+
+	rra_rrb(&stack_a);
+
+	printf("a\n###\n");
+	print_list(stack_a);
+	printf("###\n\nb\n###\n");
+	print_list(stack_b);
+	printf("###\n\n\n");
+	while (1);
 	return (0);
 }
