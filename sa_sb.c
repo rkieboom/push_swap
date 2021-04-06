@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   sa.c                                               :+:    :+:            */
+/*   sa_sb.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/03/22 21:40:28 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/03/22 23:44:42 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/04/06 00:52:32 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/04/06 04:50:02 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sa_sb(t_stack **stack_head)
 	t_stack *new_stack;
 
 	stack = *stack_head;
-	if (stack_lstsize(stack) < 2)
+	if (!stack || stack_lstsize(stack) < 2)
 		return ;
 	new_stack = stack->next;
 	ft_swap(&stack->rank, &new_stack->rank);
