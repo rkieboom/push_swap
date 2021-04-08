@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 00:55:08 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 19:31:11 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/08 23:47:15 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	pa(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *b;
+	t_stack	*b;
 
-	b = *stack_b;	
+	b = *stack_b;
 	if (!*stack_b)
 		return ;
 	if (!*stack_a)
@@ -32,7 +32,7 @@ void	pa(t_stack **stack_a, t_stack **stack_b)
 
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *a;
+	t_stack	*a;
 
 	a = *stack_a;
 	if (!*stack_a)

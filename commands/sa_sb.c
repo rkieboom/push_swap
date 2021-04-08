@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 00:52:32 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 19:31:29 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/08 23:48:30 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	sa_sb(t_stack **stack_head)
 {
-	t_stack *stack;
-	t_stack *new_stack;
+	t_stack	*stack;
+	t_stack	*new_stack;
 
 	stack = *stack_head;
 	if (!stack || stack_lstsize(stack) < 2)
@@ -28,7 +28,7 @@ void	sa_sb(t_stack **stack_head)
 }
 
 void	ss(t_stack **stack_a, t_stack **stack_b)
-{ 
+{
 	sa_sb(stack_a);
 	sa_sb(stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 04:02:23 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 19:31:20 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/08 23:47:37 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ra_rb(t_stack **stack)
 {
-	t_stack *temp;
-	t_stack *temp2;
+	t_stack	*temp;
+	t_stack	*temp2;
 
 	if (!*stack || stack_lstsize(*stack) < 2)
 		return ;
