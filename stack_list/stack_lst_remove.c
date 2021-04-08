@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 00:57:44 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 01:29:27 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/08 23:52:00 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	fix_ranking(t_stack **head);
 
 void	stack_lst_remove(t_stack **head, int rank)
 {
-	t_stack *temp;
-	t_stack *temp2;
+	t_stack	*temp;
+	t_stack	*temp2;
 
 	temp = *head;
 	if (rank == 0)

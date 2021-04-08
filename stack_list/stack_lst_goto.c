@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 04:37:11 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 04:47:04 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/08 23:51:15 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_stack	*stack_lst_goto(t_stack **lst, int rank)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	temp = *lst;
 	if (!temp)

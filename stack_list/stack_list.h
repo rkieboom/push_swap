@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/09 14:55:27 by spelle        #+#    #+#                 */
-/*   Updated: 2021/04/06 19:42:38 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/08 23:50:27 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 typedef struct s_stack
 {
-	int	rank;
-	int value;
+	int				rank;
+	int				value;
 	struct s_stack	*next;
-}				t_stack;
+}					t_stack;
 
 t_stack	*stack_lst_new(int rank, int value);
 
@@ -30,6 +30,5 @@ void	stack_lst_remove(t_stack **head, int rank);
 t_stack	*stack_lstlast(t_stack *lst);
 int		stack_lstsize(t_stack *lst);
 t_stack	*stack_lst_goto(t_stack **lst, int rank);
-
 
 #endif
