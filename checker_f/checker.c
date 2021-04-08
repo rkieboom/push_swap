@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/20 16:00:19 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 19:39:16 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/08 23:41:35 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_reterror(void)
 
 void	check_args(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -33,7 +33,7 @@ void	check_args(char *str)
 
 t_stack	*save_args(char **argv, t_stack *list)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	while (argv[i])
@@ -42,16 +42,17 @@ t_stack	*save_args(char **argv, t_stack *list)
 		if (stack_lstsize(list) == 0)
 			list = stack_lst_new(0, ft_atoi(argv[i]));
 		else
-			stack_lst_add_back(&list, stack_lst_new(stack_lstsize(list), ft_atoi(argv[i])));
+			stack_lst_add_back(&list,
+			stack_lst_new(stack_lstsize(list), ft_atoi(argv[i])));
 		i++;
 	}
 	return (list);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	(void)argc;
 	stack_a = save_args(argv, NULL);

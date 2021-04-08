@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 18:48:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 19:11:13 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/08 23:42:07 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	check_command(t_stack **stack_a, t_stack **stack_b, char *buf)
 
 int	input(t_stack **stack_a, t_stack **stack_b)
 {
-	int ret;
-	char *buf;
-	
+	int		ret;
+	char	*buf;
+
 	ret = 1;
 	buf = NULL;
 	while (ret == 1)

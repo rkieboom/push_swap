@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 19:10:02 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 19:25:28 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/08 23:42:40 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	ko(void)
 
 void	result(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack *temp;
-	int temp_num;
+	t_stack	*temp;
+	int		temp_num;
 
 	temp = *stack_a;
 	if (*stack_b)
@@ -41,6 +41,6 @@ void	result(t_stack **stack_a, t_stack **stack_b)
 		temp = temp->next;
 	}
 	if (temp_num > temp->value)
-			ko();
-		ok();
+		ko();
+	ok();
 }
