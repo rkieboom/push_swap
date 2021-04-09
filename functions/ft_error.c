@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   checker.c                                          :+:    :+:            */
+/*   ft_error.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/03/20 16:00:19 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/09 00:08:02 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/04/09 00:06:59 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/04/09 00:07:38 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include <unistd.h>
+#include <stdlib.h>
 
-int	main(int argc, char **argv)
+void	ft_reterror(void)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-
-	(void)argc;
-	stack_a = save_stack(argv, NULL);
-	stack_b = NULL;
-	if (!stack_a)
-		return (-1);
-	if (input(&stack_a, &stack_b) == -1)
-		ft_reterror();
-	result(&stack_a, &stack_b);
-	return (0);
+	write(1, "Error\n", 7);
+	exit(EXIT_FAILURE);
 }
