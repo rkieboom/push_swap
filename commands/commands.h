@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 19:26:08 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/08 23:45:23 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/12 02:26:29 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ void	rra_rrb(t_stack **stack);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
 
 void	fix_ranking(t_stack **head);
+int		get_last_rank(t_stack *stack);
 
 #endif
