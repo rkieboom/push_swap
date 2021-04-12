@@ -6,11 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 19:28:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/06 19:29:16 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/12 00:11:20 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "stack_list/stack_list.h"
+
+#include <stdio.h>
 
 void	print_list(t_stack *list)
 {
