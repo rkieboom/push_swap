@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/10 00:57:05 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/12 02:42:52 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/13 17:27:06 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	move_a(t_stack **stack_a, t_stack **stack_b, int *min_max)
 				{
 					printf("rrb\n");
 					rra_rrb(stack_b);
-					length++;
+					length--;
 				}
 			}
 			else

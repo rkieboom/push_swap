@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/20 16:00:19 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/09 00:08:02 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/13 16:03:25 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	(void)argc;
+	if (argc < 2)
+		return (0);
 	stack_a = save_stack(argv, NULL);
 	stack_b = NULL;
 	if (!stack_a)
