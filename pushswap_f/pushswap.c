@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/08 23:55:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/12 02:44:09 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/20 11:36:53 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int		main(int argc, char **argv)
 	if (!stack_a)
 		return (-1);
 
-	sort(&stack_a, &stack_b);
-	print_list(stack_a);
-	printf("\n\n\n-----\n\n\n");
-	print_list(stack_b);
+	sort2(&stack_a, &stack_b);
+	// print_list(stack_a);
+	// printf("\n\n\n-----\n\n\n");
+	// print_list(stack_b);
 	return (0);
 }
