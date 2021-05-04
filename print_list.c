@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 19:28:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/12 00:11:20 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/21 14:47:51 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,31 @@
 
 #include <stdio.h>
 
-void	print_list(t_stack *list)
+void	print_list(t_stack *stack_a, t_stack *stack_b)
 {
-	if (!list)
+	if (!stack_a)
+		printf("List a NULL\n\n");
+	else
 	{
-		printf("NULL\n");
-		return ;
+		printf("List a:\n");
+		while (stack_a->next)
+		{
+			printf("%d=%d\n", stack_a->rank, stack_a->value);
+			stack_a = stack_a->next;
+		}
+		printf("%d=%d\n\n", stack_a->rank, stack_a->value);
 	}
-	while (list->next)
+	if (!stack_b)
+		printf("List b NULL\n");
+	else
 	{
-		printf("%d=%d\n", list->rank, list->value);
-		list = list->next;
+		printf("List b:\n");
+		while (stack_b->next)
+		{
+			printf("%d=%d\n", stack_b->rank, stack_b->value);
+			stack_b = stack_b->next;
+		}
+		printf("%d=%d\n", stack_b->rank, stack_b->value);
 	}
-	printf("%d=%d\n", list->rank, list->value);
+	printf("\n---\n\n");
 }

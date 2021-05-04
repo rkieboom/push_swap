@@ -6,15 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/09 00:03:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/13 17:33:08 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/21 14:43:34 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../stack_list/stack_list.h"
 #include "../libft/libft.h"
 
-
-void	print_list(t_stack *list);
 void	ft_reterror(void);
 
 void	check_args(char *str)

@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"stack_list.h": "c",
+		"commands.h": "c",
+		"checker.h": "c"
+	}
+}

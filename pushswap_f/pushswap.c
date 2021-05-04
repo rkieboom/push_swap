@@ -6,13 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/08 23:55:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/20 11:36:53 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/04/21 14:43:46 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	print_list(t_stack *list);
+void	print_list(t_stack *stack_a, t_stack *stack_b);
 
 int		main(int argc, char **argv)
 {
