@@ -6,13 +6,13 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/04/20 11:30:40 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/05/05 16:49:40 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = $(PUSHSWAP) $(CHECKER)
 
-PUSHSWAP = pushswap
+PUSHSWAP = push_swap
 
 CHECKER = checker
 
@@ -24,11 +24,11 @@ SRCS_CHECKER = $(SRCS.CHECKER) $(SRCS.GNL) $(SRCS.STACK) $(SRCS.COMMANDS) $(SRCS
 
 SRCS_PUSHSWAP = $(SRCS.PUSHSWAP) $(SRCS.GNL) $(SRCS.STACK) $(SRCS.COMMANDS) $(SRCS.FUNCTIONS)
 
-SRCS.CHECKER = checker_f/checker.c checker_f/input.c checker_f/result.c
+SRCS.CHECKER = checker_f/checker.c checker_f/input.c
 
-SRCS.PUSHSWAP = pushswap_f/pushswap.c pushswap_f/set_min_max.c pushswap_f/sort.c pushswap_f/sort2.c
+SRCS.PUSHSWAP = pushswap_f/pushswap.c pushswap_f/set_min.c pushswap_f/sort.c
 
-SRCS.FUNCTIONS = functions/ft_error.c functions/save_stack.c print_list.c
+SRCS.FUNCTIONS = functions/ft_error.c functions/save_stack.c functions/checksorted.c
 
 SRCS.GNL = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 

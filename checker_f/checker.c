@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/20 16:00:19 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/13 16:03:25 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/05 14:54:02 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int	main(int argc, char **argv)
 		return (-1);
 	if (input(&stack_a, &stack_b) == -1)
 		ft_reterror();
-	result(&stack_a, &stack_b);
+	checkifsorted(&stack_a, &stack_b);
 	return (0);
 }

@@ -1,79 +1,133 @@
-// /* ************************************************************************** */
-// /*                                                                            */
-// /*                                                        ::::::::            */
-// /*   sort.c                                             :+:    :+:            */
-// /*                                                     +:+                    */
-// /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
-// /*                                                   +#+                      */
-// /*   Created: 2021/04/10 00:57:05 by rkieboom      #+#    #+#                 */
-// /*   Updated: 2021/04/20 13:22:34 by rkieboom      ########   odam.nl         */
-// /*                                                                            */
-// /* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   sort.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/04/20 10:52:06 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/05/05 17:11:55 by rkieboom      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
-// #include "pushswap.h"
+#include "pushswap.h"
 
-// void	move_b(t_stack **stack_a, t_stack **stack_b, int *min_max)
-// {
-// 	int length;
+int	checkclosest(t_stack *temp, int num, int buf, int length)
+{
+	int		result;
 
-// 	length = stack_lstsize(*stack_a);
+	result = length;
+	while (temp)
+	{
+		if (temp->value >= num - buf && temp->value <= num + buf)
+		{
+			result = temp->rank;
+			break ;
+		}
+		temp = temp->next;
+	}
+	if (!temp)
+		return (-1);
+	while (temp)
+	{
+		if (temp->value >= num - buf && temp->value <= num + buf && \
+		length - temp->rank < result)
+			result = temp->rank;
+		temp = temp->next;
+	}
+	return (result);
+}
 
-// 	set_min_max(min_max, *stack_a, *stack_b);
-// 	while (length - 1)
-// 	{
-// 		if ((*stack_a)->value == min_max[1] && printf("ra\n"))
-// 			ra_rb(stack_a);
-// 		else if (printf("pb\n"))
-// 			pb(stack_a, stack_b);
-// 		length--;
-// 	}
-// }
+int	move_b(t_stack **stack_a, t_stack **stack_b, int buf, int length)
+{
+	int	closest;
 
-// void	move_a(t_stack **stack_a, t_stack **stack_b, int *min_max)
-// {
-// 	t_stack *temp;
-// 	int length;
+	closest = checkclosest(*stack_a, set_min(*stack_a), buf, length);
+	if (closest == -1)
+		return (0);
+	else if ((length / 2) < closest)
+	{
+		length = length - closest;
+		while (length)
+		{
+			rra(stack_a);
+			length--;
+		}
+		pb(stack_a, stack_b);
+	}
+	else
+	{
+		while (closest)
+		{
+			ra(stack_a);
+			closest--;
+		}
+		pb(stack_a, stack_b);
+	}
+	return (1);
+}
 
-// 	while ((*stack_b))
-// 	{
-// 		set_min_max(min_max, *stack_a, *stack_b);
-// 		temp = *stack_b;
-// 		if ((*stack_b)->value == min_max[3] && printf("pa\n"))
-// 			pa(stack_a, stack_b);
-// 		else
-// 		{
-// 			while (temp && temp->value != min_max[3])
-// 				temp = temp->next;
-// 			if (((stack_lstsize(*stack_b) / 2) + 1) < temp->rank)
-// 			{
-// 				//beneden	
-// 				length = get_last_rank(temp) - ((stack_lstsize(*stack_b) / 2) + 1);
-// 				while (length)
-// 				{
-// 					printf("rrb\n");
-// 					rra_rrb(stack_b);
-// 					length--;
-// 				}
-// 			}
-// 			else
-// 			{
-// 				//omhoog
-// 				length = temp->rank;
-// 				while (length)
-// 				{
-// 					printf("rb\n");
-// 					ra_rb(stack_b);
-// 					length--;
-// 				}
-// 			}
-// 		}
-// 	}
-// }
+static int	get_biggest_num(t_stack **stack)
+{
+	int		result[2];
+	t_stack	*temp;
 
-// int		sort(t_stack **stack_a, t_stack **stack_b)
-// {
-// 	int min_max[4];
-// 	move_b(stack_a, stack_b, min_max);
-// 	move_a(stack_a, stack_b, min_max);
-// 	return (0);	
-// }
+	temp = *stack;
+	if (!temp)
+		return (-1);
+	result[0] = temp->rank;
+	result[1] = temp->value;
+	while (temp)
+	{
+		if (temp->value > result[1])
+		{
+			result[0] = temp->rank;
+			result[1] = temp->value;
+		}
+		temp = temp->next;
+	}
+	return (result[0]);
+}
+
+int	move_a(t_stack **stack_a, t_stack **stack_b, int length)
+{
+	int	closest;
+
+	closest = get_biggest_num(stack_b);
+	if (closest == -1)
+		return (0);
+	else if ((length / 2) < closest)
+	{
+		length = length - closest;
+		while (length)
+		{
+			rrb(stack_b);
+			length--;
+		}
+		pa(stack_a, stack_b);
+	}
+	else
+	{
+		while (closest)
+		{
+			rb(stack_b);
+			closest--;
+		}
+		pa(stack_a, stack_b);
+	}
+	return (1);
+}
+
+int	sort(t_stack **stack_a, t_stack **stack_b)
+{
+	int	buf;
+
+	buf = 30;
+	checkifsorted_n(stack_a, stack_b);
+	while (*stack_a)
+		move_b(stack_a, stack_b, buf, stack_lstsize(*stack_a));
+	while (*stack_b)
+		move_a(stack_a, stack_b, stack_lstsize(*stack_b));
+	checkifsorted(stack_a, stack_b);
+	return (1);
+}

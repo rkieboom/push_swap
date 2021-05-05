@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   get_last_rank.c                                    :+:    :+:            */
+/*   set_min.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/12 02:25:29 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/05 16:00:55 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/04/11 23:36:32 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/05/05 16:55:34 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "commands.h"
+#include "pushswap.h"
 
-int	get_last_rank(t_stack *stack)
+int	set_min(t_stack *stack)
 {
-	while (stack->next)
+	int	min;
+
+	min = stack->value;
+	while (stack)
+	{
+		if (stack->value < min)
+			min = stack->value;
 		stack = stack->next;
-	return (stack->rank);
+	}
+	return (min);
 }
