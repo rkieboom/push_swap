@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/05/05 16:49:40 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/09/20 14:53:15 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS_PUSHSWAP = $(SRCS.PUSHSWAP) $(SRCS.GNL) $(SRCS.STACK) $(SRCS.COMMANDS) $(SR
 
 SRCS.CHECKER = checker_f/checker.c checker_f/input.c
 
-SRCS.PUSHSWAP = pushswap_f/pushswap.c pushswap_f/set_min.c pushswap_f/sort.c
+SRCS.PUSHSWAP = pushswap_f/pushswap.c pushswap_f/set_min.c pushswap_f/sort.c pushswap_f/sortsmall.c
 
 SRCS.FUNCTIONS = functions/ft_error.c functions/save_stack.c functions/checksorted.c
 
