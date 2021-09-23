@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/08 23:54:47 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/05 17:02:03 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/23 19:00:27 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int		checkifsorted_n(t_stack **stack_a, t_stack **stack_b);
 t_stack	*save_stack(char **argv, t_stack *list);
 int		set_min(t_stack *stack);
 void	ft_reterror(void);
+void	three_numbers_sort(t_stack **stack_a);
 
 #endif

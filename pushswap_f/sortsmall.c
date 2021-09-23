@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/20 14:40:23 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/20 14:56:53 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/23 19:03:13 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int		get_smallest(t_stack *stack)
 	return (small);
 }
 
-static int		get_mid(t_stack stack, int small, int big)
+static int		get_mid(t_stack *stack, int small, int big)
 {
 	int mid;
 	
@@ -38,7 +38,7 @@ static int		get_mid(t_stack stack, int small, int big)
 	return (mid);
 }
 
-static int		get_big(t_stack stack)
+static int		get_big(t_stack *stack)
 {
 	int big;
 	big = stack->value;
@@ -51,14 +51,16 @@ static int		get_big(t_stack stack)
 	return (big);
 }
 
-void			three_numbers_sort(t_stack **stack_a, t_stack **stack_b)
+void			three_numbers_sort(t_stack **stack_a)
 {
 	int small;
 	int mid;
 	int big;
 
-	small = get_smallest(stack_a);
-	big = get_big(stack_a);
-	mid = get_mid(stack_a, small, big);
+	small = get_smallest(*stack_a);
+	big = get_big(*stack_a);
+	mid = get_mid(*stack_a, small, big);
+
+	
 	
 }
