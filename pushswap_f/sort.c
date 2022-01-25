@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/20 10:52:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/23 19:01:02 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/01/25 18:18:54 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,15 +118,20 @@ int	move_a(t_stack **stack_a, t_stack **stack_b, int length)
 	return (1);
 }
 
-int	sort(t_stack **stack_a, t_stack **stack_b)
+void	sort(t_stack **stack_a, t_stack **stack_b)
 {
+	int size;
 	int	buf;
 
 	buf = 30;
+	size = stack_lstsize(*stack_a);
 	checkifsorted_n(stack_a, stack_b);
-
-	if (stack_lstsize(*stack_a) == 3)
+	if (size == 2)
+		sa(stack_a);
+	if (size == 3)
 		three_numbers_sort(stack_a);
+	else if (size >= 1 && size <= 100)
+		sort_small(stack_a, stack_lstsize(*stack_a));
 	else
 	{
 		while (*stack_a)
@@ -135,5 +140,4 @@ int	sort(t_stack **stack_a, t_stack **stack_b)
 			move_a(stack_a, stack_b, stack_lstsize(*stack_b));
 	}
 	checkifsorted(stack_a, stack_b);
-	return (1);
 }
