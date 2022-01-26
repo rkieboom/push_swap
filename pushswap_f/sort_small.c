@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 17:44:10 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/01/25 19:46:39 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/01/25 22:15:18 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,22 @@ void	sort_small(t_stack **stack_a, t_stack **stack_b, int size)
 
 	i = 0;
 	j = 0;
-	temp = *stack_a;
-	size = stack_lstsize(temp);
-	while (i < (size - 1))//hier mee bezig
+	size = stack_lstsize(*stack_a);
+	while (i < size)//hier mee bezig
 	{
-		oldnum = temp->value;
-		temp = temp->next;
-		if (oldnum > temp->value)
-			sa(stack_a);
-		checkifsorted_n(stack_a, 0);
-		ra(stack_a);
+		temp = *stack_a;
+		while (temp)
+		{
+			oldnum = temp->value;
+			temp = temp->next;
+			if (!temp)
+				break ;
+			if (oldnum > temp->value)
+				sa(stack_a);
+			checkifsorted_n(stack_a, stack_b);
+			ra(stack_a);
+		}
 		i++;
 	}
-	print_list(*stack_a, 0);
-	
+	print_list(*stack_a, *stack_b);
 }

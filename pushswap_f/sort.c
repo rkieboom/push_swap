@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/20 10:52:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/01/25 18:18:54 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/01/25 21:59:28 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 	if (size == 3)
 		three_numbers_sort(stack_a);
 	else if (size >= 1 && size <= 100)
-		sort_small(stack_a, stack_lstsize(*stack_a));
+		sort_small(stack_a, stack_b, stack_lstsize(*stack_a));
 	else
 	{
 		while (*stack_a)
