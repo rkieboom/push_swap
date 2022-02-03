@@ -6,13 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/20 10:52:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/01/25 21:59:28 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/01/27 16:27:12 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	checkclosest(t_stack *temp, int num, int buf, int length)
+static int	checkclosest(t_stack *temp, int num, int buf, int length)
 {
 	int		result;
 
@@ -38,7 +38,7 @@ int	checkclosest(t_stack *temp, int num, int buf, int length)
 	return (result);
 }
 
-int	move_b(t_stack **stack_a, t_stack **stack_b, int buf, int length)
+static int	move_b(t_stack **stack_a, t_stack **stack_b, int buf, int length)
 {
 	int	closest;
 
@@ -89,7 +89,7 @@ static int	get_biggest_num(t_stack **stack)
 	return (result[0]);
 }
 
-int	move_a(t_stack **stack_a, t_stack **stack_b, int length)
+static int	move_a(t_stack **stack_a, t_stack **stack_b, int length)
 {
 	int	closest;
 
@@ -123,12 +123,12 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 	int size;
 	int	buf;
 
-	buf = 30;
+	buf = 1;
 	size = stack_lstsize(*stack_a);
 	checkifsorted_n(stack_a, stack_b);
 	if (size == 2)
 		sa(stack_a);
-	if (size == 3)
+	else if (size == 3)
 		three_numbers_sort(stack_a);
 	else if (size >= 1 && size <= 100)
 		sort_small(stack_a, stack_b, stack_lstsize(*stack_a));

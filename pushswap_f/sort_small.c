@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 17:44:10 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/01/25 22:15:18 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/01/30 19:18:08 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,32 +41,44 @@ void	print_list(t_stack *stack_a, t_stack *stack_b)
 	printf("\n---\n\n");
 }
 
+static int somefunc(t_stack **stack, int find)
+{
+	int result;
+	t_stack *temp;
+
+	result = 0;
+	temp = *stack;
+	while (temp)
+	{
+		if (temp->value < find)
+			result++;
+		temp = temp->next;
+	}
+	return (result);
+}
 
 void	sort_small(t_stack **stack_a, t_stack **stack_b, int size)
-{
-	t_stack *temp;
-	int	oldnum;
-	int i;
-	int j;
+{					
+	t_stack *temp;				
+	int oldnum;
 
-	i = 0;
-	j = 0;
-	size = stack_lstsize(*stack_a);
-	while (i < size)//hier mee bezig
+	temp = (*stack_a)->next;
+	oldnum = (*stack_a)->value;			//   start  		  4 3 6 2
+										//   start    swap      rra       rra       swap      rra       rra 
+	checkifsorted_n(stack_a, stack_b); // 3 2 6 4 - 2 3 6 4 - 4 2 3 6 - 6 4 2 3 - 4 6 2 3 - 3 4 6 2 - 2 3 4 6
+	while (1)
 	{
-		temp = *stack_a;
-		while (temp)
-		{
-			oldnum = temp->value;
-			temp = temp->next;
-			if (!temp)
-				break ;
-			if (oldnum > temp->value)
-				sa(stack_a);
-			checkifsorted_n(stack_a, stack_b);
-			ra(stack_a);
-		}
-		i++;
+		temp = (*stack_a)->next;
+		oldnum = (*stack_a)->value;
+		if (oldnum > temp->value && somefunc(stack_a, oldnum))
+			sa(stack_a);
+		checkifsorted_n(stack_a, stack_b);
+		rra(stack_a);
+		checkifsorted_n(stack_a, stack_b);
+		print_list(*stack_a, *stack_b);
+		sleep(3);
 	}
-	print_list(*stack_a, *stack_b);
+	
+
+	size = 0;
 }
