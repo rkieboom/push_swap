@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/09 00:06:59 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/09 00:07:38 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/02/05 12:29:36 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 void	ft_reterror(void)
 {
-	write(1, "Error\n", 7);
+	write(2, "Error\n", 7);
 	exit(EXIT_FAILURE);
 }
