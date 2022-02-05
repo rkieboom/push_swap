@@ -6,15 +6,17 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/09 00:03:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/02/05 10:38:55 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/02/05 12:59:49 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pushswap_f/pushswap.h"
 
-static void	check_minus(char *str)
+static void	check_minus_plus(char *str)
 {
 	if (str[0] == '-' && ft_isdigit(str[1]) == 0)
+		ft_reterror();
+	if (str[0] == '+' && ft_isdigit(str[1]) == 0)
 		ft_reterror();
 }
 
@@ -25,8 +27,8 @@ void	check_args(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '-')
-			check_minus(str + i);
+		if (str[i] == '-' || str[i] == '+')
+			check_minus_plus(str + i);
 		if (!ft_isdigit(str[i]) && str[i] != ' ' \
 		&& str[i] != '-' && str[i] != '+')
 			ft_reterror();
