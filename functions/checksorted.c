@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 19:10:02 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/02/05 11:54:43 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/02/05 12:34:01 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,21 @@ void	checkifsorted(t_stack **stack_a, t_stack **stack_b)
 	ok();
 }
 
-int	checkifsorted_n(t_stack **stack_a, t_stack **stack_b)
+void	checkifsorted_n(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*temp;
 	int		num;
 
 	if (!*stack_a || *stack_b)
-		return (0);
+		return ;
 	temp = (*stack_a)->next;
 	num = (*stack_a)->value;
 	while (temp)
 	{
 		if (num > temp->value)
-			return (0);
+			return ;
 		num = temp->value;
 		temp = temp->next;
 	}
 	exit(0);
-	return (1);
 }
