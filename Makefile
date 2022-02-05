@@ -5,66 +5,118 @@
 #                                                      +:+                     #
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
-#    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/01/25 18:19:53 by rkieboom      ########   odam.nl          #
+#    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
+#    Updated: 2022/02/05 12:01:53 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = $(PUSHSWAP) $(CHECKER)
+# ================================ VARIABLES ================================= #
 
-PUSHSWAP = push_swap
+# The name of your executable
+NAME		= push_swap
 
-CHECKER = checker
+NAME_BONUS	= checker
 
-LIBFT = libft/libft.a
+# Compiler and compiling flags
+CC	= gcc
+CFLAGS	= -Wall -Werror -Wextra
 
-FLAGS = -Wall -Werror -Wextra
+# Debug, use with`make DEBUG=1`
+ifeq ($(DEBUG),1)
+CFLAGS	+= -g3 -fsanitize=address
+endif
+
+# Folder name
+SRCDIR	= ./
+OBJDIR	= bin/
+LIBFTDIR = libft/
+
+LIBFTLIB = $(LIBFTDIR)/libft.a
+
+SRCS =	$(SRCS_PUSHSWAP)
+
+SRCS.BONUS = $(SRCS_CHECKER)
 
 SRCS_CHECKER = $(SRCS.CHECKER) $(SRCS.GNL) $(SRCS.STACK) $(SRCS.COMMANDS) $(SRCS.FUNCTIONS)
 
-SRCS_PUSHSWAP = $(SRCS.PUSHSWAP) $(SRCS.GNL) $(SRCS.STACK) $(SRCS.COMMANDS) $(SRCS.FUNCTIONS)
+SRCS_PUSHSWAP = $(SRCS.PUSHSWAP) $(SRCS.STACK) $(SRCS.COMMANDS) $(SRCS.FUNCTIONS)
 
 SRCS.CHECKER = checker_f/checker.c checker_f/input.c
 
-SRCS.PUSHSWAP = pushswap_f/pushswap.c pushswap_f/set_min.c pushswap_f/sort.c pushswap_f/sort3num.c pushswap_f/sort_small.c
+SRCS.PUSHSWAP = pushswap_f/pushswap.c pushswap_f/set_min.c pushswap_f/sort.c pushswap_f/sort3num.c \
+				pushswap_f/sort_small.c 
 
-SRCS.FUNCTIONS = functions/ft_error.c functions/save_stack.c functions/checksorted.c
+SRCS.FUNCTIONS = functions/ft_error.c functions/save_stack.c functions/checksorted.c functions/check_duplicate.c \
+				functions/ft_atoi_l.c functions/sort_small_func.c functions/small_mid_big.c
 
 SRCS.GNL = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 SRCS.STACK = stack_list/stack_lst_add_front.c stack_list/stack_lst_goto.c stack_list/stack_lst_new.c stack_list/stack_lst_remove.c \
 stack_list/stack_lst_add_back.c stack_list/stack_lstlast.c stack_list/stack_lstsize.c
 
-SRCS.COMMANDS = commands/fix_ranking.c commands/ft_swap.c commands/pa_pb.c commands/ra_rb.c commands/rra_rrb.c commands/sa_sb.c commands/get_last_rank.c
+SRCS.COMMANDS = commands/fix_ranking.c commands/ft_swap.c commands/pa_pb.c \
+				commands/ra_rb.c commands/rra_rrb.c commands/sa_sb.c commands/get_last_rank.c
 
-O.SRCS_CHECKER = $(SRCS_CHECKER:.c=.o)
+# String manipulation magic
+SRC		:= $(notdir $(SRCS))
+OBJ		:= $(SRC:.c=.o)
+OBJS	:= $(addprefix $(OBJDIR), $(OBJ))
 
-O.SRCS_PUSHSWAP = $(SRCS_PUSHSWAP:.c=.o)
+SRC_B		:= $(notdir $(SRCS.BONUS))
+OBJ_B		:= $(SRC_B:.c=.o)
+OBJS_B	:= $(addprefix $(OBJDIR), $(OBJ_B))
 
-all: $(NAME)
+# Colors
+GR	= \033[32;1m
+RE	= \033[31;1m
+YE	= \033[33;1m
+CY	= \033[36;1m
+RC	= \033[0m
 
-$(CHECKER): $(O.SRCS_CHECKER) $(LIBFT)
-	$(CC) -g $(FLAGS) $(O.SRCS_CHECKER) $(LIBFT) -o $(CHECKER)
+# Implicit rules
+VPATH := $(SRCDIR) $(OBJDIR) $(shell find $(SRCDIR) -type d)
 
-$(PUSHSWAP): $(O.SRCS_PUSHSWAP) $(LIBFT)
-	$(CC) -g $(FLAGS) $(O.SRCS_PUSHSWAP) $(LIBFT) -o $(PUSHSWAP)
+# ================================== RULES =================================== #
 
-$(LIBFT):
-	make -C Libft/.
+all : $(NAME)
 
-%.o: %.c
-	$(CC) -g -Wall -Werror -Wextra -Ilibft -c $< -o $@
+# Compiling
+$(OBJDIR)%.o : %.c
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
-	rm -rf $(O.SRCS_CHECKER)
-	rm -rf $(O.SRCS_PUSHSWAP)
-	make -C Libft/. clean
+# Linking
+$(NAME)	: $(LIBFTLIB) $(SRCS)  $(OBJS)
+	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRC)$(RC)\n"
+	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME)
 
-fclean:
-	rm -rf $(NAME)
-	rm -rf $(LIBFT)
-	rm -rf $(O.SRCS_CHECKER)
-	rm -rf $(O.SRCS_PUSHSWAP)
-	make -C Libft/. clean
+$(LIBFTLIB) :
+	make -C $(LIBFTDIR)
+	
+# Cleaning
+clean :
+	@printf "$(RE)--- Removing $(OBJDIR)$(RC)\n"
+	@rm -rf $(OBJDIR)
+	@make -C $(LIBFTDIR) clean
 
-re: fclean all
+fclean : clean
+	@printf "$(RE)--- Removing $(NAME) & $(NAME_BONUS)$(RC)\n"
+	@rm -f $(NAME)
+	@rm -f $(NAME_BONUS)
+	@make -C $(LIBFTDIR) fclean
+
+# Special rule to force to remake everything
+re : fclean all
+
+bonus : all $(SRCS.BONUS) $(OBJS_B)
+	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRC_B)$(RC)\n"
+	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS_B) -o $(NAME_BONUS)
+
+# This runs the program
+run : $(NAME)
+	@printf "$(CY)>>> Running $(NAME)$(RC)\n"
+	./$(NAME)
+
+# This specifies the rules that does not correspond to any filename
+.PHONY	= all run clean fclean re bonus

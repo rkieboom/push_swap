@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   checker.c                                          :+:    :+:            */
+/*   check_duplicate.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/03/20 16:00:19 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/02/05 10:34:04 by rkieboom      ########   odam.nl         */
+/*   Created: 2022/02/03 14:13:37 by rkieboom      #+#    #+#                 */
+/*   Updated: 2022/02/05 10:34:58 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../pushswap_f/pushswap.h"
 
-int	main(int argc, char **argv)
+void	check_duplicate(t_stack **stack_a)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack	*temp;
+	t_stack	*i;
+	int		j;
+	int		k;
 
-	stack_b = NULL;
-	if (argc < 2)
-		return (0);
-	stack_a = save_stack(argv, NULL, 1, 0);
-	if (!stack_a)
-		return (-1);
-	check_duplicate(&stack_a);
-	if (input(&stack_a, &stack_b) == -1)
-		ft_reterror();
-	checkifsorted(&stack_a, &stack_b);
-	return (0);
+	k = 0;
+	temp = *stack_a;
+	while (temp)
+	{
+		i = *stack_a;
+		j = 0;
+		while (i)
+		{
+			if (j != k && temp->value == i->value)
+				ft_reterror();
+			i = i->next;
+			j++;
+		}
+		temp = temp->next;
+		k++;
+	}
 }

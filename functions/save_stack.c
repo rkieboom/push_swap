@@ -6,14 +6,11 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/09 00:03:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/05 16:03:21 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/02/05 10:38:55 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../stack_list/stack_list.h"
-#include "../libft/libft.h"
-
-void	ft_reterror(void);
+#include "../pushswap_f/pushswap.h"
 
 static void	check_minus(char *str)
 {
@@ -30,26 +27,27 @@ void	check_args(char *str)
 	{
 		if (str[i] == '-')
 			check_minus(str + i);
-		if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '-')
+		if (!ft_isdigit(str[i]) && str[i] != ' ' \
+		&& str[i] != '-' && str[i] != '+')
 			ft_reterror();
 		i++;
 	}
 }
 
-t_stack	*save_stack(char **argv, t_stack *list)
+t_stack	*save_stack(char **argv, t_stack *list, int i, int j)
 {
-	int		i;
-	int		j;
 	char	**string;
 
-	i = 1;
-	j = 0;
 	while (argv[i])
 	{
 		check_args(argv[i]);
 		string = ft_split(argv[i], ' ');
+		if (!string)
+			ft_reterror();
 		while (string[j])
 		{
+			if (ft_atoi(string[j]) != ft_atoi_l(string[j]))
+				ft_reterror();
 			if (stack_lstsize(list) == 0)
 				list = stack_lst_new(0, ft_atoi(string[j]));
 			else

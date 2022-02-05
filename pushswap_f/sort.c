@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/20 10:52:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/01/27 16:27:12 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/02/05 12:19:21 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,19 @@ static int	move_b(t_stack **stack_a, t_stack **stack_b, int buf, int length)
 		length = length - closest;
 		while (length)
 		{
-			rra(stack_a);
+			rra(stack_a, 1);
 			length--;
 		}
-		pb(stack_a, stack_b);
+		pb(stack_a, stack_b, 1);
 	}
 	else
 	{
 		while (closest)
 		{
-			ra(stack_a);
+			ra(stack_a, 1);
 			closest--;
 		}
-		pb(stack_a, stack_b);
+		pb(stack_a, stack_b, 1);
 	}
 	return (1);
 }
@@ -101,36 +101,39 @@ static int	move_a(t_stack **stack_a, t_stack **stack_b, int length)
 		length = length - closest;
 		while (length)
 		{
-			rrb(stack_b);
+			rrb(stack_b, 1);
 			length--;
 		}
-		pa(stack_a, stack_b);
+		pa(stack_a, stack_b, 1);
 	}
 	else
 	{
 		while (closest)
 		{
-			rb(stack_b);
+			rb(stack_b, 1);
 			closest--;
 		}
-		pa(stack_a, stack_b);
+		pa(stack_a, stack_b, 1);
 	}
 	return (1);
 }
 
 void	sort(t_stack **stack_a, t_stack **stack_b)
 {
-	int size;
+	int	size;
 	int	buf;
 
-	buf = 1;
 	size = stack_lstsize(*stack_a);
+	if (size >= 1 && size <= 10)
+		buf = 1;
+	else
+		buf = 30;
 	checkifsorted_n(stack_a, stack_b);
 	if (size == 2)
-		sa(stack_a);
+		sa(stack_a, 1);
 	else if (size == 3)
 		three_numbers_sort(stack_a);
-	else if (size >= 1 && size <= 100)
+	else if (size >= 4 && size <= 6)
 		sort_small(stack_a, stack_b, stack_lstsize(*stack_a));
 	else
 	{
@@ -139,5 +142,4 @@ void	sort(t_stack **stack_a, t_stack **stack_b)
 		while (*stack_b)
 			move_a(stack_a, stack_b, stack_lstsize(*stack_b));
 	}
-	checkifsorted(stack_a, stack_b);
 }

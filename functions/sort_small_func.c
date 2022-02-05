@@ -1,58 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   checksorted.c                                      :+:    :+:            */
+/*   sort_small_func.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/04/06 19:10:02 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/02/05 11:54:43 by rkieboom      ########   odam.nl         */
+/*   Created: 2022/02/05 11:58:15 by rkieboom      #+#    #+#                 */
+/*   Updated: 2022/02/05 11:58:54 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../stack_list/stack_list.h"
-#include <unistd.h>
 
-static void	ok(void)
-{
-	write(1, "OK\n", 3);
-	exit(EXIT_SUCCESS);
-}
-
-static void	ko(void)
-{
-	write(1, "KO\n", 3);
-	exit(EXIT_SUCCESS);
-}
-
-void	checkifsorted(t_stack **stack_a, t_stack **stack_b)
+int	is_sorted(t_stack *stack)
 {
 	t_stack	*temp;
 	int		num;
 
-	if (!*stack_a || *stack_b)
-		ko();
-	temp = (*stack_a)->next;
-	num = (*stack_a)->value;
-	while (temp)
-	{
-		if (num > temp->value)
-			ko();
-		num = temp->value;
-		temp = temp->next;
-	}
-	ok();
-}
-
-int	checkifsorted_n(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack	*temp;
-	int		num;
-
-	if (!*stack_a || *stack_b)
-		return (0);
-	temp = (*stack_a)->next;
-	num = (*stack_a)->value;
+	temp = stack->next;
+	num = stack->value;
 	while (temp)
 	{
 		if (num > temp->value)
@@ -60,6 +26,22 @@ int	checkifsorted_n(t_stack **stack_a, t_stack **stack_b)
 		num = temp->value;
 		temp = temp->next;
 	}
-	exit(0);
+	return (1);
+}
+
+int	is_sorted_r(t_stack *stack)
+{
+	t_stack	*temp;
+	int		num;
+
+	temp = stack->next;
+	num = stack->value;
+	while (temp)
+	{
+		if (num < temp->value)
+			return (0);
+		num = temp->value;
+		temp = temp->next;
+	}
 	return (1);
 }

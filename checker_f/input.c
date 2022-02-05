@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 18:48:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/04/25 20:12:27 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/02/05 12:18:26 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,27 @@
 void	check_command(t_stack **stack_a, t_stack **stack_b, char *buf)
 {
 	if (ft_strncmp("sa", buf, 3) == 0)
-		sa(stack_a);
+		sa(stack_a, 0);
 	else if (ft_strncmp("sb", buf, 3) == 0)
-		sb(stack_b);
+		sb(stack_b, 0);
 	else if (ft_strncmp("ss", buf, 3) == 0)
-		ss(stack_a, stack_b);
+		ss(stack_a, stack_b, 0);
 	else if (ft_strncmp("pa", buf, 3) == 0)
-		pa(stack_a, stack_b);
+		pa(stack_a, stack_b, 0);
 	else if (ft_strncmp("pb", buf, 3) == 0)
-		pa(stack_b, stack_a);
+		pa(stack_b, stack_a, 0);
 	else if (ft_strncmp("ra", buf, 3) == 0)
-		ra(stack_a);
+		ra(stack_a, 0);
 	else if (ft_strncmp("rb", buf, 3) == 0)
-		rb(stack_b);
+		rb(stack_b, 0);
 	else if (ft_strncmp("rr", buf, 3) == 0)
-		rr(stack_a, stack_b);
+		rr(stack_a, stack_b, 0);
 	else if (ft_strncmp("rra", buf, 4) == 0)
-		rra(stack_a);
+		rra(stack_a, 0);
 	else if (ft_strncmp("rrb", buf, 4) == 0)
-		rrb(stack_b);
+		rrb(stack_b, 0);
 	else if (ft_strncmp("rrr", buf, 4) == 0)
-		rrr(stack_a, stack_b);
+		rrr(stack_a, stack_b, 0);
 }
 
 int	input(t_stack **stack_a, t_stack **stack_b)

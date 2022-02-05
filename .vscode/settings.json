@@ -2,6 +2,7 @@
 	"files.associations": {
 		"stack_list.h": "c",
 		"commands.h": "c",
-		"checker.h": "c"
+		"checker.h": "c",
+		"pushswap.h": "c"
 	}
 }
