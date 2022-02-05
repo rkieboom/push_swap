@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/08 23:54:47 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/02/05 12:03:37 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/02/05 12:31:08 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		sort(t_stack **stack_a, t_stack **stack_b);
 void		sort_small(t_stack **stack_a, t_stack **stack_b, int size);
 
 void		checkifsorted(t_stack **stack_a, t_stack **stack_b);
-int			checkifsorted_n(t_stack **stack_a, t_stack **stack_b);
+void		checkifsorted_n(t_stack **stack_a, t_stack **stack_b);
 void		check_duplicate(t_stack **stack_a);
 
 t_stack		*save_stack(char **argv, t_stack *list, int i, int j);
