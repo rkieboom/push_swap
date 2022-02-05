@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 18:48:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/02/05 12:18:26 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/02/05 12:51:05 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	check_command(t_stack **stack_a, t_stack **stack_b, char *buf)
 		rrb(stack_b, 0);
 	else if (ft_strncmp("rrr", buf, 4) == 0)
 		rrr(stack_a, stack_b, 0);
+	else
+		ft_reterror();
 }
 
 int	input(t_stack **stack_a, t_stack **stack_b)
