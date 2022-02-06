@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/04/06 18:48:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/02/05 12:51:05 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/02/06 18:37:48 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	input(t_stack **stack_a, t_stack **stack_b)
 		ret = get_next_line(0, &buf);
 		if (!buf)
 			return (-1);
-		check_command(stack_a, stack_b, buf);
+		if (ret != 0)
+			check_command(stack_a, stack_b, buf);
 		free(buf);
 	}
 	return (1);
